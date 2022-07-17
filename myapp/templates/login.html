@@ -1,0 +1,46 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<center>
+		<h2> Sign in to your account </h2>
+        <p> Enter your email and password </p>
+		{% if msg %}
+			<b style="color: red;">{{msg}}</b>
+		{% endif %}
+		    <form name="login" method="post" action="{% url 'login' %}">
+			    {% csrf_token %}
+			    <table>
+				
+					<td>Email</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit" value="LOGIN" class="btn btn-primary"></td>
+					<td><a href=""><input type="button" name="fp" value="FORGOT PASSWORD" class="btn"></td></a>
+				</tr>
+				<tr>
+                    <p>
+					<td colspan="2" align="center">
+						Haven't Signed Up Yet ? <a href = "{% url 'signup' %}">Click here to signup here </a>
+					</td>
+                </p>
+				</tr>
+				
+			</table>
+
+		</form>
+	</center>
+</body>
+</html>
+{% endblock %}
