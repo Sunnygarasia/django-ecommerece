@@ -2,94 +2,91 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body {
-      }
-      * {
-        box-sizing: border-box;
-      }
-
-      input[type="text"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 16px;
-      }
-
-      input[type="submit"] {
-        background-color: #04aa6d;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #45a049;
-      }
-
-      .container {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
-      }
-    </style>
   </head>
   <body>
     <center>
       <h2 class="custom_heading text-center">Contact Page</h2>
 
-      <div class="container mt-4 pt-4">
-        <form name="contact" method="post" action="{% url 'contact' %}">
+      <div class="login-body">
+        <form name="contact" method="post" action="{% url 'contact' %}
+        enctype="multipart/form-data"">
           {% csrf_token %}
-          <fieldset>
+          <div class="signup">
             <tr>
-              <td>Name</td>
-              <td><input type="text" name="name" /></td>
+              <div class="form-row col-md-2">
+                <input
+                  name="fname"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="First Name"
+                />
+              </div>
             </tr>
             <tr>
-              <td>Email</td>
-              <td><input type="text" name="email" /></td>
+              <div class="form-row col-md-2">
+                <input
+                  name="lname"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Last Name"
+                />
+              </div>
             </tr>
-
             <tr>
-              <td>Mobile Number</td>
-              <td><input type="text" name="mobile" /></td>
+              <div class="form-row col-md-2">
+                <input
+                  name="email"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Email"
+                />
+              </div>
             </tr>
-
             <tr>
-              <td>Subject</td>
-              <td><input type="text" name="subject" /></td>
+              <div class="form-row col-md-2">
+                <input
+                  name="subject"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Subject"
+                />
+              </div>
             </tr>
-
             <tr>
-              <td>Additional Information</td>
-              <td>
-                <textarea rows="5" cols="25" name="addinfo"></textarea>
-              </td>
+              <div class="form-row col-md-2">
+                <textarea rows="5" cols="25" name="add_info" placeholder="Additional Information" required=""></textarea>
+              </div>
             </tr>
-
+            <br>
+            <br>
             <tr>
               <td colspan="2" align="center">
-                <input
-                  type="submit"
-                  name="submit"
-                  value="SUBMIT"
-                  class="btn"
-                /><br />
+                <input type="submit" name="submit" value="SIGNUP" class="btn" />
               </td>
             </tr>
-            {% if msg %}
-            <b style="color: red">{{msg}}</b>
-            {% endif %}
-          </fieldset>
+            <br />
+            <br />
+            <tr>
+              <td colspan="2" align="center">
+                Already Signed Up ?
+                <a href="{% url 'login' %}">Click here to login </a>
+              </td>
+            </tr>
+          </div>
         </form>
       </div>
     </center>

@@ -2,43 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      body * {
-        box-sizing: border-box;
-      }
-
-      input[type="text"],
-      select,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 16px;
-        resize: vertical;
-      }
-
-      input[type="submit"] {
-        background-color: #04aa6d;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #45a049;
-      }
-
-      .container {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <center>
@@ -46,94 +11,101 @@
       {% if msg %}
       <b style="color: red">{{msg}}</b>
       {% endif %}
-      <form
-        name="signup"
-        method="post"
-        action="{% url 'signup' %}"
-        enctype="multipart/form-data"
-      >
-        {% csrf_token %}
-        <div class="login-body">
-          <tr>
-            <div class="form-row col-md-2">
-              <input
-                name="fname"
-                type="text"
-                required=""
-                autocomplete="true"
-                class="field"
-                value=""
-                placeholder="First Name"
-              />
-            </div>
-          </tr>
-          <tr>
-            <div class="form-row col-md-2">
-              <input
-                name="lname"
-                type="text"
-                required=""
-                autocomplete="true"
-                class="field"
-                value=""
-                placeholder="Last Name"
-              />
-            </div>
-          </tr>
-          <tr>
-            <div class="form-row col-md-2">
-              <input
-                name="email"
-                type="text"
-                required=""
-                autocomplete="true"
-                class="field"
-                value=""
-                placeholder="Email"
-              />
-            </div>
-          </tr>
-          <tr>
-            <div class="form-row col-md-2">
-              <input
-                name="password"
-                type="text"
-                required=""
-                autocomplete="true"
-                class="field"
-                value=""
-                placeholder="Password"
-              />
-            </div>
-          </tr>
-          <tr>
-            <div class="form-row col-md-2">
-              <input
-                name="cpassword"
-                type="text"
-                required=""
-                autocomplete="true"
-                class="field"
-                value=""
-                placeholder="Confirm Password"
-              />
-            </div>
-          </tr>
-          <tr>
-            <div class="form-group row">
-              <div align="center">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+      <div class="login-body">
+        <form
+          name="signup"
+          method="post"
+          action="{% url 'signup' %}"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="signup">
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="fname"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="First Name"
+                />
               </div>
-            </div>
-          </tr>
-          <tr>
-            <td colspan="2" align="center">
-              Already Signed Up ?
-              <a href="{% url 'login' %}">Click here to login </a>
-            </td>
-          </tr>
-        </div>
-      </form>
+            </tr>
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="lname"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Last Name"
+                />
+              </div>
+            </tr>
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="email"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Email"
+                />
+              </div>
+            </tr>
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="password"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Password"
+                />
+              </div>
+            </tr>
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="cpassword"
+                  type="text"
+                  required=""
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Confirm Password"
+                />
+              </div>
+            </tr>
+            <tr>
+              <td colspan="2" align="center">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="SIGNUP"
+                  class="btn-outline-primary"
+                />
+              </td>
+            </tr>
+            <br />
+            <br />
+            <tr>
+              <td colspan="2" align="center">
+                Already Signed Up ?
+                <a href="{% url 'login' %}">Click here to login </a>
+              </td>
+            </tr>
+          </div>
+        </form>
+      </div>
     </center>
   </body>
 </html>

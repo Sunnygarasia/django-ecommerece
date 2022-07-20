@@ -544,8 +544,9 @@ a:focus {
   padding-bottom: 20px;
   background-color: transparent;
   outline: none;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.526);
 }
+
 
 .contact_section input::-webkit-input-placeholder {
   color: #fff;
