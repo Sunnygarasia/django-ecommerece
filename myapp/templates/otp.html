@@ -1,37 +1,51 @@
-{% extends 'header.html' %}
-{% block content %}
+{% extends 'header.html' %} {% block content %}
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head>
-<body>
-<center>
-		<h1> One Time Password </h1>
-		{% if msg %}
-			<b style="color: red;">{{msg}}</b>
-		{% endif %}
-		<form name="" method="post" action="{% url 'verify_otp' %}">
-			{% csrf_token %}
-			
-				<tr>
-					<td><input type="hidden" name="otp" value="{{otp}}"></td>
-					<td><input type="hidden" name="email" value="{{email}}"></td>
-				</tr>
-				
-					<td>Enter OTP</td>
-					<td><input type="text" name="uotp"></td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" align="center"><input type="submit" name="submit" value="Verify OTP" class="btn-outline-primary"></td>
-				</tr>
-	
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+  </head>
+  <body>
+    <center>
+      <h1>One Time Password</h1>
+      {% if msg %}
+      <b style="color: red">{{msg}}</b>
+      {% endif %}
+      <form name="" method="post" action="{% url 'verify_otp' %}">
+        {% csrf_token %}
 
-		</form>
-	</center>
-</body>
+        <tr>
+          <td><input type="hidden" name="otp" value="{{otp}}" /></td>
+          <td><input type="hidden" name="email" value="{{email}}" /></td>
+        </tr>
+        <tr>
+			<div class="login">
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="uotp"
+                  type="text"
+                  autocomplete="true"
+                  class="field"
+                  value=""
+                  placeholder="Enter OTP"
+                />
+              </div>
+		</tr>
+
+        <tr>
+          <td colspan="2" align="center">
+            <input
+              type="submit"
+              name="submit"
+              value="Verify OTP"
+              class="btn-outline-primary"
+            />
+          </td>
+        </tr>
+      </form>
+    </center>
+  </body>
 </html>
 {% endblock %}

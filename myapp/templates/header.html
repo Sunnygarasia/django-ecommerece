@@ -16,6 +16,7 @@
   <style>
       body * {
         box-sizing: border-box;
+        font-family: "Ubuntu", sans-serif;
       }
 
       input[type="text"],
@@ -102,9 +103,19 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'sneakers' %}"> Sneakers </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}"> Account </a>
-                </li>
+                <div class="dropdown">
+                  <button class="dropbtn"> ACCOUNT </button>
+                  <div class="dropdown-content">
+                    {% if request.session.email %}
+                      <a href="{% url 'account_info' %}"> {{request.session.fname}} </a>
+                      <a href="{% url 'logout' %}"> Logout </a>
+                    {% else %}
+                      <a href="{% url 'signup' %}"> Create Account </a>
+                      <a href="{% url 'login' %}"> Login </a>
+                    {% endif %}
+                    
+                  </div>
+                </div>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
                 </li>
@@ -127,7 +138,7 @@
   <section class="container-fluid footer_section">
     <p>
       © 2020 All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
+      <a href="https://html.design/">SneakerFlip</a>
     </p>
   </section>
   <!-- footer section -->
