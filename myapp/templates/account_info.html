@@ -1,0 +1,91 @@
+{% extends 'header.html' %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <center>
+      <h1>Edit Profile</h1>
+      <div class="login-body">
+        <form
+          name="account_info"
+          method="post"
+          action="{% url 'account_info' %}"
+        >
+          {% csrf_token %}
+          <div class="account_info">
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="fname"
+                  type="text"
+                  autocomplete="true"
+                  class="field"
+                  value="{{user.fname}}"
+                  placeholder="First Name"
+                />
+              </div>
+            </tr>
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="lname"
+                  type="text"
+                  autocomplete="true"
+                  class="field"
+                  value="{{user.lname}}"
+                  placeholder="Last Name"
+                />
+              </div>
+            </tr>
+            <tr>
+              <div class="form-row col-md-2">
+                <input
+                  name="email"
+                  type="text"
+                  autocomplete="true"
+                  class="field"
+                  value="{{user.email}}"
+                  placeholder="Email"
+                />
+              </div>
+            </tr>
+            <br />
+            <tr>
+              <td colspan="2" align="center">
+                <a href="{% url 'change_password' %}" </a>
+                  <input
+                    class="btn-outline-primary"
+                    type="button"
+                    name="change_password"
+                    value="RESET PASSWORD"
+                  </>
+                
+              </td>
+            </tr>
+            <br />
+            <br />
+            <tr>
+              <td colspan="2" align="center">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="UPDATE ACCOUNT"
+                  class="btn-outline-primary"
+                />
+              </td>
+            </tr>
+            <br />
+            <br />
+            {% if msg %}
+            <b style="color: red">{{msg}}</b>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </center>
+  </body>
+</html>
+{% endblock %}

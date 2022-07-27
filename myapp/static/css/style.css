@@ -51,15 +51,18 @@ body {
 }
 
 .header_section .container-fluid { 
+  font-family: "Ubuntu", sans-serif;
   padding-right: 25px;
   padding-left: 25px;
 }
 
 .header_section .nav_container {
+  font-family: "Ubuntu", sans-serif;
   margin: 0 auto;
 }
 
 .custom_nav-container.navbar-expand-lg .navbar-nav .nav-link {
+  font-family: "Ubuntu", sans-serif;
   padding: 10px 30px;
   color: #000000;
   text-align: center;
@@ -141,6 +144,7 @@ a:focus {
 }
 
 .custom_nav-container .nav_search-btn {
+  font-family: "Ubuntu", sans-serif;
   background-image: url(../images/search-icon.png);
   background-size: 22px;
   background-repeat: no-repeat;
@@ -173,15 +177,18 @@ a:focus {
 }
 
 .custom_nav-container {
+  font-family: "Ubuntu", sans-serif;
   z-index: 99999;
   padding: 15px 0;
 }
 
 .custom_nav-container .navbar-toggler {
+  font-family: "Ubuntu", sans-serif;
   outline: none;
 }
 
 .custom_nav-container .navbar-toggler .navbar-toggler-icon {
+  font-family: "Ubuntu", sans-serif;
   background-image: url(../images/menu.png);
   background-size: 55px;
 }
@@ -198,12 +205,13 @@ a:focus {
 }
 
 .slider_item-box .container {
+  font-family: "Ubuntu", sans-serif;
   height: 100%;
 }
 
 .slider_img-box {
-  width: 85%;
-  margin: 0 auto;
+  width: 500px;
+  margin: auto;
 }
 
 .slider_img-box img {
@@ -211,6 +219,7 @@ a:focus {
 }
 
 .slider_item-container {
+  font-family: "Ubuntu", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -327,12 +336,14 @@ a:focus {
 }
 
 .about_img-box img {
-  width: 100%;
+  width: 100px;
 }
 
 .brand_section {
   text-align: center;
   background-color: #c1dcf9;
+  
+
 }
 
 .brand_section h3 {
@@ -340,6 +351,7 @@ a:focus {
 }
 
 .brand_section .brand_item-container {
+  font-family: "Ubuntu", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -360,6 +372,7 @@ a:focus {
   background-size: cover;
   background-position: center;
   position: relative;
+  
 }
 
 .brand_img-box.item-1 {
@@ -663,7 +676,7 @@ a:focus {
 .info_items .item .img-box {
   width: 80px;
   height: 80px;
-  border-radius: 100%;
+  border-radius: 10%;
   background-color: #ffffff;
   background-repeat: no-repeat;
   background-position: center;
@@ -695,15 +708,15 @@ a:focus {
 }
 
 .info_items .item .img-box.box-1 {
-  background-image: url(../images/location-blue.png);
+  background-image: ;
 }
 
 .info_items .item .img-box.box-2 {
-  background-image: url(../images/telephone-blue.png);
+  background-image: ;
 }
 
 .info_items .item .img-box.box-3 {
-  background-image: url(../images/envelope-blue.png);
+  background-image: ;
 }
 
 .info_items .item .img-box:hover {
@@ -711,15 +724,19 @@ a:focus {
 }
 
 .info_items .item .img-box:hover.box-1 {
-  background-image: url(../images/location-white.png);
+  background-image: ;
 }
 
 .info_items .item .img-box:hover.box-2 {
-  background-image: url(../images/telephone-white.png);
+  background-image: ;
 }
 
 .info_items .item .img-box:hover.box-3 {
-  background-image: url(../images/envelope-white.png);
+  background-image: ;
+}
+.img{
+  width: 200px;
+  height: 400px;
 }
 
 /* footer section*/

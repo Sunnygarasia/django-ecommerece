@@ -1,5 +1,6 @@
+import email
 from django.shortcuts import redirect, render
-from .models import Contact, User
+from .models import Contact, User, Sneaker, Cart
 from django.conf import settings
 from django.core.mail import send_mail
 import random
@@ -13,7 +14,25 @@ def index(request):
 
 
 def sneakers(request):
-    return render(request, 'sneakers.html')
+    try:
+        user = User.objects.get(email=request.session['email'])
+        sneakers = Sneaker.objects.filter(user=user)
+        if request.method == "POST":
+            user.fname = request.POST['fname']
+            user.lname = request.POST['lname']
+            user.email = request.POST['email']
+
+            return render(request, 'sneakers.html', {'user': user})
+        else:
+
+            return render(request, 'sneakers.html', {'sneakers': sneakers})
+    except:
+        return render(request, 'sneakers.html')
+
+
+def sneaker_detail(request, pk):
+    sneaker = Sneaker.objects.get(pk=pk)
+    return render(request, 'sneaker_detail.html', {'sneaker': sneaker})
 
 
 def login(request):
@@ -147,17 +166,38 @@ def change_password(request):
         return render(request, 'change_password.html')
 
 
-def new_password(request):
-    email = request.POST['email']
-    new_password = request.POST['new_password']
-    cnew_password = request.POST['cnew_password']
+def sell_sneaker(request):
+    if request.method == "POST":
+        user = User.objects.get(email=request.session['email'])
+        Sneaker.objects.create(
+            user=user,
+            sneaker_name=request.POST['sneaker_name'],
+            sneaker_size=request.POST['sneaker_size'],
+            sneaker_price=request.POST['sneaker_price'],
+            sneaker_desc=request.POST['sneaker_desc'],
+            sneaker_image=request.FILES['sneaker_image'],
 
-    if new_password == cnew_password:
-        user = User.objects.get(email=email)
-        user.password = new_password
-        user.save()
-        msg = "Password Updated Succesfully. You May Login Now"
-        return render(request, 'login.html', {'msg': msg})
+        )
+        msg = "Sneaker Added Successfully"
+        return render(request, 'sell_sneaker.html', {'msg': msg})
+
     else:
-        msg = "Password Didn't Match"
-        return render(request, 'new_password.html', {'email': email, 'msg': msg})
+        return render(request, 'sell_sneaker.html')
+
+
+def cart(request):
+    user = User.objects.get(email=request.session['email'])
+    carts = Cart.objects.filter(user=user)
+    request.session['cart_count'] = len(carts)
+    return render(request, 'cart.html', {'carts': carts})
+
+
+def add_to_cart(request, pk):
+    sneaker = Sneaker.objects.get(pk=pk)
+    user = User.objects.get(email=request.session['email'])
+    Cart.objects.create(sneaker=sneaker, user=user,
+                        product_qty=1,
+                        sneaker_price=sneaker.sneaker_price,
+                        total_price=sneaker.sneaker_price
+                        )
+    return redirect('cart')

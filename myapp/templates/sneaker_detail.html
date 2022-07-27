@@ -1,0 +1,56 @@
+{% extends 'header.html'%} {% block content %}
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <section class="container sneakers my-5 pt-5">
+      <h1>{{sneaker.sneaker_name}}</h1>
+      <div class="row mt-5">
+        <div class="col-lg-5 col-md-12 col-12">
+          <a href=""
+            ><img
+              src="{{sneaker.sneaker_image.url}}"
+              alt=""
+              class="img-fluid w-100"
+            />
+          </a>
+        </div>
+
+        <div class="col-lg-6 col-md-12 col-12">
+          <h4>Price: ${{sneaker.sneaker_price}}</h4>
+          <h4>Size: {{sneaker.sneaker_size}}</h4>
+          <br />
+          <tr>
+            <td colspan="2" align="center">
+              <input
+                type="submit"
+                name="submit"
+                value="Add To Cart"
+                class="btn btn-success"
+              />
+            </td>
+          </tr>
+          <br />
+          <br />
+          <h6>
+            <b>Product Description:</b><br />
+            <br />{{sneaker.sneaker_desc}}
+          </h6>
+        </div>
+      </div>
+    </section>
+
+    <script src="" async defer></script>
+  </body>
+</html>
+
+{% endblock %}
