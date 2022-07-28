@@ -31,12 +31,13 @@
           <br />
           <tr>
             <td colspan="2" align="center">
-              <input
-                type="submit"
-                name="submit"
-                value="Add To Cart"
-                class="btn btn-success"
-              />
+              <a href="{% url 'add_to_cart' pk=sneaker.pk %}">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Add To Cart"
+                  class="btn btn-success"
+              /></a>
             </td>
           </tr>
           <br />

@@ -1,4 +1,4 @@
-from time import timezone
+import datetime
 from django.db import models
 
 # Create your models here.
@@ -39,9 +39,9 @@ class Sneaker(models.Model):
 class Cart(models.Model):
     sneaker = models.ForeignKey(Sneaker, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=timezone)
-    product_qty = models.PositiveIntegerField(default=1)
-    product_price = models.PositiveIntegerField()
+    date = models.DateTimeField(default=datetime.date.today)
+    sneaker_qty = models.PositiveIntegerField(default=1)
+    sneaker_price = models.PositiveIntegerField()
     total_price = models.PositiveIntegerField()
     payment_status = models.CharField(max_length=100, default="pending")
 

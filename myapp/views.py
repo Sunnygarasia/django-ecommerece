@@ -44,6 +44,8 @@ def login(request):
             )
             request.session['email'] = user.email
             request.session['fname'] = user.fname
+            carts = Cart.objects.filter(user=user)
+            request.session['cart_count'] = len(carts)
             return render(request, 'index.html')
         except:
             msg = "Email or password incorrect"
@@ -196,8 +198,16 @@ def add_to_cart(request, pk):
     sneaker = Sneaker.objects.get(pk=pk)
     user = User.objects.get(email=request.session['email'])
     Cart.objects.create(sneaker=sneaker, user=user,
-                        product_qty=1,
+                        sneaker_qty=1,
                         sneaker_price=sneaker.sneaker_price,
                         total_price=sneaker.sneaker_price
                         )
+    return redirect('cart')
+
+
+def remove_from_cart(request, pk):
+    sneaker = Sneaker.objects.get(pk=pk)
+    user = User.objects.get(email=request.session['email'])
+    cart = Cart.objects.get(user=user, sneaker=sneaker)
+    cart.delete()
     return redirect('cart')
