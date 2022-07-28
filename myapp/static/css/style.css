@@ -845,13 +845,15 @@ a:focus {
   margin-bottom: 30px;
   border: 1px solid #000000;
   padding: 20px;
-  
+  margin-right: 100px;
+    
 }
 
 #subtotal table{
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 20px;
+
 
 }
 

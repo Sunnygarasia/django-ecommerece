@@ -1,4 +1,3 @@
-import email
 from django.shortcuts import redirect, render
 from .models import Contact, User, Sneaker, Cart
 from django.conf import settings
@@ -188,6 +187,7 @@ def sell_sneaker(request):
 
 
 def cart(request):
+
     user = User.objects.get(email=request.session['email'])
     carts = Cart.objects.filter(user=user)
     request.session['cart_count'] = len(carts)
@@ -210,4 +210,14 @@ def remove_from_cart(request, pk):
     user = User.objects.get(email=request.session['email'])
     cart = Cart.objects.get(user=user, sneaker=sneaker)
     cart.delete()
+    return redirect('cart')
+
+
+def change_qty(request):
+    pk = int(request.POST['pk'])
+    cart = Cart.objects.get(pk=pk)
+    sneaker_qty = int(request.POST['sneaker_qty'])
+    cart.sneaker_qty = sneaker_qty
+    cart.total_price = total_price*sneaker_price
+    cart.save()
     return redirect('cart')

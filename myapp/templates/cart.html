@@ -27,24 +27,20 @@
             <td>Image</td>
             <td>Product</td>
             <td>Price</td>
-            <td>Quantity</td>
-            <td>Subtotal</td>
           </tr>
         </thead>
         <tbody>
           {% for i in carts %}
           <tr>
             <td>
-              <a href="{% url 'remove_from_cart' pk.sneaker.pk %}"
-                ><i class="fa-solid fa-xmark fa-lg"></i
+              <a href="{% url 'remove_from_cart' pk=i.sneaker.pk %}">
+                <i class="fa-solid fa-xmark"></i
               ></a>
             </td>
             <td>
               <img src="{{i.sneaker.sneaker_image.url}}" atl="" width="75px" />
             </td>
             <td>{{i.sneaker.sneaker_name}}</td>
-            <td>${{i.sneaker.sneaker_price}}</td>
-            <td><input type="number" value="1" /></td>
             <td>${{i.sneaker.sneaker_price}}</td>
           </tr>
           {% endfor %}
@@ -54,7 +50,8 @@
     <br />
     <br />
     <section id="cart-add" class="section-p1">
-      <div id="subtotal">
+      {% if carts %}
+      <div id="subtotal" style="float: right">
         <h3>Cart Total</h3>
         <table>
           <tr>
@@ -71,6 +68,7 @@
           </tr>
         </table>
         <button class="btn-success">Checkout</button>
+        {% endif %}
       </div>
     </section>
   </body>
