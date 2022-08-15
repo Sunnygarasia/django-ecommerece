@@ -1,8 +1,11 @@
+from django import apps
 from django.shortcuts import redirect, render
-from .models import Contact, User, Sneaker, Cart
+from .models import Contact, Order, User, Sneaker, Cart
 from django.conf import settings
 from django.core.mail import send_mail
 import random
+import stripe
+stripe.api_key = settings.SECRET_KEY
 
 
 # Create your views here.
@@ -188,10 +191,14 @@ def sell_sneaker(request):
 
 def cart(request):
 
+    net_price = 0
     user = User.objects.get(email=request.session['email'])
     carts = Cart.objects.filter(user=user)
-    request.session['cart_count'] = len(carts)
-    return render(request, 'cart.html', {'carts': carts})
+    for i in carts:
+        for i in carts:
+            net_price = net_price+i.total_price
+            request.session['cart_count'] = len(carts)
+        return render(request, 'cart.html', {'carts': carts, 'net_price': net_price})
 
 
 def add_to_cart(request, pk):
@@ -218,6 +225,33 @@ def change_qty(request):
     cart = Cart.objects.get(pk=pk)
     sneaker_qty = int(request.POST['sneaker_qty'])
     cart.sneaker_qty = sneaker_qty
-    cart.total_price = total_price*sneaker_price
+    cart.total_price = sneaker_qty*sneaker_price
     cart.save()
     return redirect('cart')
+
+
+def payment(request):
+    net_price = int(request.POST['net_price'])
+    return render(request, 'payment.html', {'net_price': net_price, 'key': settings.PUBLISHABLE_KEY})
+
+
+def success(request):
+    if request.method == "POST":
+        user = User.objects.get(email=request.session['email'])
+        net_price = request.POST['net_price']
+        charge = stripe.Charge.create(
+            amount=int(net_price),
+            currency='usd',
+            description='A Payment Gateway',
+            source=request.POST['stripeToken']
+        )
+        carts = Cart.objects.filter(user=user)
+        for i in carts:
+            i.payment_status = "paid"
+            i.save()
+        Order.objects.create(
+            user=user,
+            net_price=net_price,
+            stripToken=request.POST['stripeToken']
+        )
+    return render(request, 'success.html')

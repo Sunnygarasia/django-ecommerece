@@ -47,3 +47,13 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.user.fname + " - " + self.sneaker.sneaker_name
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    net_price = models.PositiveIntegerField()
+    order = models.DateTimeField(default=datetime.date.today)
+    stripToken = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.user.fname+" - "+str(self.net_price)

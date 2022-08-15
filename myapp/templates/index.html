@@ -1,4 +1,4 @@
-{% extends 'header.html'%} {% load static %} {% block content %}
+{% extends 'header.html'%} {% block content %} {% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
-  <body></body>
+  <body>
+    <br />
+    <br />
+    <h1 style="text-align: center; font-weight: bold">
+      SHOP BEST SNEAKERS HERE
+    </h1>
+    <br />
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'images/j1banner.jpg' %}" class="img-fluid" />
+          <p>{{ content }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'images/yeezybanner.jpg' %}" class="img-fluid" />
+          <p>{{ content }}</p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+  </body>
 </html>
 {% endblock%}

@@ -133,3 +133,7 @@ EMAIL_HOST_PASSWORD = 'nqboedsohlihcidd'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+PUBLISHABLE_KEY = "pk_test_51LQeRrLuRNHXf6ww2O4mBJMFeg9Jz52ttAyXZUSps8ZhgKlMnsw5zsyw3j2r7RxeLn5lxjknsMHiIeK3Z5fy0ID300wOkGYQnh"
+SECRET_KEY = "sk_test_51LQeRrLuRNHXf6wwK2lwpQNzrwGxtHzMUvKQLJsjCENB4kDnUFGeb4XfsoTscskeNHiAIuv8sZqMs2oBpDzk8kar00YEFROX7K"
